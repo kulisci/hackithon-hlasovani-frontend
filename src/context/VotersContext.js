@@ -2,10 +2,12 @@ import React from 'react';
 
 const voters = [
   {
-    name: 'Alois'
+    name: 'Alois',
+    surname: 'Jirásek'
   },
   {
-    name: 'Pepa'
+    name: 'Pepa',
+    surname: 'Katič'
   }
 ];
 
