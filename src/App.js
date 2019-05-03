@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       {voters.map((voter, i) => (
-        <div key={i}>{voter.name}<br />{voter.surname}</div>
+        <p key={i}>{voter.name}</p>
       ))}
     </div>
   );
