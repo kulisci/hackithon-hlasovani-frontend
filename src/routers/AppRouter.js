@@ -1,14 +1,16 @@
 import React from 'react';
 import { Router, Switch } from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory';
+import * as history from 'history';
 import LandingPage from '../components/LandingPage';
 import Voters from '../components/Voters';
 import CustomRoute from '../routers/CustomRoute';
 
-export const history = createHistory();
+const createHistory = history.createBrowserHistory;
+
+export const browHistory = createHistory();
 
 const AppRouter = () => (
-  <Router history={history}>
+  <Router history={browHistory}>
     <>
       <Switch>
         <CustomRoute path="/" component={LandingPage} exact={true} />
