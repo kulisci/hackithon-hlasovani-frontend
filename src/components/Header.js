@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Navbar = styled.div`
-  grid-template-column: 400px 150px 400px;
+  grid-template-columns: 400px 150px 400px;
   display: grid;
   justify-items: center;
   text-align: center;
@@ -17,6 +17,15 @@ const Navbar = styled.div`
 const NavbarDiv = styled.div`
   font-size: 1.6em;
   padding: 1rem 4rem;
+  a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.2s ease;
+    &:hover {
+      color: hotpink;
+      transform: translateY(-10%);
+    }
+  }
 `;
 
 const NavbarHr = styled.hr`
@@ -28,7 +37,7 @@ const NavbarHr = styled.hr`
 const LinkHr = styled.hr`
   width: 99%;
   display: block;
-  @media (min-width: 35rem){
+  @media (min-width: 35rem) {
     display: none;
   }
 `;
@@ -36,10 +45,14 @@ const LinkHr = styled.hr`
 export default () => (
   <header>
     <Navbar>
-      <NavbarDiv><Link to="/">Hlasování zastupitelstva Děčín</Link></NavbarDiv>
-      <LinkHr></LinkHr>
-      <NavbarDiv><Link to="/voters">Zastupitelé</Link></NavbarDiv>
+      <NavbarDiv>
+        <Link to="/">Hlasování zastupitelstva Děčín</Link>
+      </NavbarDiv>
+      <LinkHr />
+      <NavbarDiv>
+        <Link to="/voters">Zastupitelé</Link>
+      </NavbarDiv>
     </Navbar>
-    <NavbarHr></NavbarHr>
+    <NavbarHr />
   </header>
 );
