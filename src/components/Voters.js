@@ -1,5 +1,15 @@
 import React from 'react';
 import VotersContext from '../context/VotersContext';
+import styled from 'styled-components';
+
+const VotersDiv = styled.div`
+
+`;
+
+const VotersP = styled.p`
+
+`;
+
 
 export default () => {
   const { voters } = React.useContext(VotersContext);
