@@ -33,6 +33,14 @@ const Button = styled.button`
     transform: translateY(-5%);
     background-color: #eee;
   }
+  &:hover:after {
+    transition: background 0.2s ease;
+    background: linear-gradient(
+      to right,
+      rgba(238, 238, 238, 0),
+      rgba(238, 238, 238, 1) 50%
+    );
+  }
   &:focus {
     border-radius: 0.5rem;
     outline: 0;
@@ -64,24 +72,24 @@ const ButtonWraper = styled.div`
 export default props => {
   const { state, dispatch } = React.useContext(Store);
 
-  const fetchDataAction = async () => {
-    const data = await fetch('http://192.168.87.76/votingReasons.php');
-    const dataJSON = await data.json();
-    return dispatch({
-      type: 'FETCH_DATA',
-      payload: dataJSON
-    });
-  };
-
   React.useEffect(() => {
-    state.votes.length === 0 && fetchDataAction();
-  }, [fetchDataAction, state.votes.length]);
+    const fetchDataAction = async () => {
+      const data = await fetch('http://192.168.81.24/votingReasons.php');
+      const dataJSON = await data.json();
+      return dispatch({
+        type: 'FETCH_DATA',
+        payload: dataJSON
+      });
+    };
+
+    fetchDataAction();
+  }, [dispatch]);
 
   return (
     <ButtonWraper>
       {state.votes.map(vote => (
         <Link key={vote.id} to={`/vote/${vote.id}`}>
-          <Button>{vote.popis}</Button>
+          <Button title={vote.popis}>{vote.popis}</Button>
         </Link>
       ))}
     </ButtonWraper>
