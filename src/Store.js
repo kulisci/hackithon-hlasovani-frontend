@@ -6,7 +6,8 @@ export const Store = React.createContext();
 const initialState = {
   votes: [],
   voteData: [],
-  representatives: []
+  representatives: [],
+  votersInfo: []
 };
 
 export function StoreProvider(props) {

@@ -48,7 +48,7 @@ export default props => {
     drawChart();
   };
 
-  const drawChart = () => {};
+  const drawChart = () => { };
 
   React.useEffect(() => {
     const fetchSingleVote = async () => {

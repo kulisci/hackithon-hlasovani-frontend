@@ -7,3 +7,86 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/shattered-dark.png");
   font-family: 'Montserrat', sans-serif;
 }
+.Pro{
+  color:  black;
+  background-color: green;
+}
+.Pro:after{
+  color: black;
+  background: linear-gradient(
+      to right,
+      rgba(0, 255, 0, 0),
+      rgba(0, 128, 0, 1) 50%
+    );
+}
+.Pro:hover:after{
+  color: black;
+  background: linear-gradient(
+      to right,
+      rgba(0, 255, 0, 0),
+      rgba(0, 128, 0, 1) 50%
+    );
+}
+
+.Proti{
+  color:  white;
+  background-color: red;
+}
+.Proti:after{
+  color: white;
+  background: linear-gradient(
+      to right,
+      rgba(255, 0, 0, 0),
+      rgba(255, 0, 0, 1) 50%
+    );
+}
+.Proti:hover:after{
+  color: white;
+  background: linear-gradient(
+      to right,
+      rgba(255, 0, 0, 0),
+      rgba(255, 0, 0, 1) 50%
+    );
+}
+
+.Omluven{
+  color:  black;
+  background-color: yellow;
+}
+.Omluven:after{
+  color: black;
+  background: linear-gradient(
+      to right,
+      rgba(255, 255, 0, 0),
+      rgba(255, 255, 0, 1) 50%
+    );
+}
+.Omluven:hover:after{
+  color: black;
+  background: linear-gradient(
+      to right,
+      rgba(255, 255, 0, 0),
+      rgba(255, 255, 0, 1) 50%
+    );
+}
+
+.Nehlasoval{
+  color:  black;
+  background-color: gray;
+}
+.Nehlasoval:after{
+  color: black;
+  background: linear-gradient(
+      to right,
+      rgba(128, 128, 128, 0),
+      rgba(128, 128, 128, 1) 50%
+    );
+}
+.Nehlasoval:hover:after{
+  color: black;
+  background: linear-gradient(
+      to right,
+      rgba(128, 128, 128, 0),
+      rgba(128, 128, 128, 1) 50%
+    );
+}
