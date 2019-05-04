@@ -12,6 +12,13 @@ export default props => {
   return (
     <div>
       <p>{vote.popis}</p>
+      <Pie
+     radius={70}
+     //completly filled pie chart with radius 70
+     series={[10, 20, 30, 40]}
+     //values to show and color sequentially
+     colors={['#f00', '#0f0', '#00f', '#ff0']}
+/>
     </div>
   );
 };
