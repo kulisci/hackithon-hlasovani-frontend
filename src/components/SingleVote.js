@@ -25,7 +25,6 @@ export default props => {
   }, [dispatch, props.match.params.id]);
 
   return (
-
     <VoteContainer>
       {state.voteData.map(
         ({ id, jmeno, prijmeni, politicka_strana, stav_hlasovani }) => (
