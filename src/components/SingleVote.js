@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import PieChart from 'react-minimal-pie-chart';
 import { Store } from '../Store';
+import ViewRepresentatives from './ViewRepresentatives';
+import selectReps from '../selectors/selectReps';
 
 const VoteContainer = styled.div`
   margin: 2.3rem;
@@ -24,6 +26,8 @@ export default props => {
   let [countProti, setCountProti] = React.useState(0);
   let [countZdrzelSe, setCountZdrzelSe] = React.useState(0);
   let [countOmluven, setCountOmluven] = React.useState(0);
+  let [representatives, setRepresentatives] = React.useState([]);
+  let [countNehlasoval, setCountNehlasoval] = React.useState(0);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const countVotes = data => {
@@ -37,18 +41,18 @@ export default props => {
       if (vote.stav_hlasovani === 'Omluven') {
         setCountOmluven(++countOmluven);
       }
-      if (
-        vote.stav_hlasovani === 'Nehlasoval' ||
-        vote.stav_hlasovani === 'Zdržel se'
-      ) {
+      if (vote.stav_hlasovani === 'Zdržel se') {
         setCountZdrzelSe(++countZdrzelSe);
       }
+
+      if (vote.stav_hlasovani === 'Nehlasoval') {
+        setCountNehlasoval(++countNehlasoval);
+      }
+
       setNumberOfPeople(++numberOfPeople);
     });
-    drawChart();
   };
 
-  const drawChart = () => { };
 
   React.useEffect(() => {
     const fetchSingleVote = async () => {
@@ -66,6 +70,24 @@ export default props => {
     fetchSingleVote();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
+
+  const handleOnClick = (event, data, dataIndex) => {
+    if (dataIndex === 0) {
+      setRepresentatives(selectReps(state.voteData, 'Pro'));
+    }
+    if (dataIndex === 1) {
+      setRepresentatives(selectReps(state.voteData, 'Proti'));
+    }
+    if (dataIndex === 2) {
+      setRepresentatives(selectReps(state.voteData, 'Omluven'));
+    }
+    if (dataIndex === 3) {
+      setRepresentatives(selectReps(state.voteData, 'Zdržel se'));
+    }
+    if (dataIndex === 4) {
+      setRepresentatives(selectReps(state.voteData, 'Nehlasoval'));
+    }
+  };
 
   return (
     <VoteContainer>
@@ -87,13 +109,20 @@ export default props => {
             title: 'Zdržel se',
             value: countZdrzelSe,
             color: '#000'
+          },
+          {
+            title: 'Nehlasoval',
+            value: countNehlasoval,
+            color: '#333'
           }
         ]}
-        style={{ height: '250px' }}
+        style={{ height: '300px' }}
         animate={true}
-        animationDuration={1200}
+        animationDuration={700}
         animationEasing="cubic-bezier(0.6, 0.04, 0.23, 0.335)"
+        onClick={handleOnClick}
       />
+      <ViewRepresentatives representatives={representatives} />
     </VoteContainer>
   );
 };

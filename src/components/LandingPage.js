@@ -3,9 +3,10 @@ import 'styled-components/macro';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Store } from '../Store';
+import Search from './Search';
 
 const Button = styled.button`
-border: 1px solid black;
+  border: 1px solid black;
   min-height: 5rem;
   background-color: white;
   overflow: hidden;
@@ -45,7 +46,6 @@ border: 1px solid black;
     outline: 0;
     border: 1px solid blue;
   }
-  
 `;
 
 const ButtonWraper = styled.div`
@@ -78,12 +78,15 @@ export default props => {
   }, [dispatch]);
 
   return (
-    <ButtonWraper>
-      {state.votes.map(vote => (
-        <Link key={vote.id} to={`/vote/${vote.id}`}>
-          <Button title={vote.popis}>{vote.popis}</Button>
-        </Link>
-      ))}
-    </ButtonWraper>
+    <>
+      <Search />
+      <ButtonWraper>
+        {state.votes.map(vote => (
+          <Link key={vote.id} to={`/vote/${vote.id}`}>
+            <Button title={vote.ppph}>{vote.ppph}</Button>
+          </Link>
+        ))}
+      </ButtonWraper>
+    </>
   );
 };
