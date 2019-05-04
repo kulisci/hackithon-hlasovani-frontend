@@ -8,7 +8,7 @@ export default ({ component: Component, ...rest }) => (
     {...rest}
     component={props => (
       <div>
-        <Helmet bodyAttributes={{style: 'background-color:lightgray; margin: 0; overflow: hidden;'}}/>
+        <Helmet bodyAttributes={{style: 'background-color:lightgray; margin: 0;'}}/>
         <Header />
         <Component {...props} />
       </div>
