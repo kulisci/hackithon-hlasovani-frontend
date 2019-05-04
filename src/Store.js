@@ -4,7 +4,8 @@ import VotesReducer from './reducers/VotesReducer';
 export const Store = React.createContext();
 
 const initialState = {
-  votes: []
+  votes: [],
+  voteData: []
 };
 
 export function StoreProvider(props) {
