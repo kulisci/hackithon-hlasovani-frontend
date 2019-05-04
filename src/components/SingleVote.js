@@ -2,7 +2,7 @@ import React from 'react';
 import { Store } from '../Store';
 
 export default props => {
-  const { state, dispatch } = React.useContext(Store);
+  const { state } = React.useContext(Store);
   const [vote, setVote] = React.useState({});
 
   React.useEffect(() => {
