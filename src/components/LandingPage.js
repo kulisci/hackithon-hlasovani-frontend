@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'styled-components/macro';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Button = styled.button`
   border: 1px solid black;
@@ -89,9 +90,9 @@ export default class VotingReasons extends Component {
       return (
         <ButtonWraper>
           {reasons.map(reason => (
-            <Button key={reason.id} title={reason.popis}>
-              {reason.popis}
-            </Button>
+            <Link key={reason.id} to={`/vote/${reason.id}`}>
+              <Button title={reason.popis}>{reason.popis}</Button>
+            </Link>
           ))}
         </ButtonWraper>
       );
