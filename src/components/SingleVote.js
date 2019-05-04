@@ -1,24 +1,39 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Store } from '../Store';
 
+const VoteContainer = styled.div`
+  margin: 2.3rem;
+`;
+
 export default props => {
-  const { state } = React.useContext(Store);
-  const [vote, setVote] = React.useState({});
+  const { state, dispatch } = React.useContext(Store);
 
   React.useEffect(() => {
-    setVote(state.votes.find(votes => votes.id === props.match.params.id));
-  }, [props.match.params.id, state.votes]);
+    const fetchSingleVote = async () => {
+      const data = await fetch(
+        `http://192.168.81.24/votingReasons.php?id=${props.match.params.id}`
+      );
+      const dataJSON = await data.json();
+      return dispatch({
+        type: 'FETCH_SINGLE_VOTE',
+        payload: dataJSON
+      });
+    };
+
+    fetchSingleVote();
+  }, [dispatch, props.match.params.id]);
 
   return (
-    <div>
-      <p>{vote.popis}</p>
-      <Pie
-     radius={70}
-     //completly filled pie chart with radius 70
-     series={[10, 20, 30, 40]}
-     //values to show and color sequentially
-     colors={['#f00', '#0f0', '#00f', '#ff0']}
-/>
-    </div>
+
+    <VoteContainer>
+      {state.voteData.map(
+        ({ id, jmeno, prijmeni, politicka_strana, stav_hlasovani }) => (
+          <p key={id}>
+            {prijmeni}, {jmeno} - {politicka_strana} - {stav_hlasovani}
+          </p>
+        )
+      )}
+    </VoteContainer>
   );
 };
