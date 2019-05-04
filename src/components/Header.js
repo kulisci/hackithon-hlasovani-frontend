@@ -11,8 +11,7 @@ const Navbar = styled.div`
     grid-template-columns: 1fr auto auto;
     justify-items: start;
   }
-  background-color: white
-  ;
+  background-color: white;
 `;
 
 const NavbarDiv = styled.div`
