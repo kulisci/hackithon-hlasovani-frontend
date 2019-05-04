@@ -1,5 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Store } from '../Store';
+
+const VoteContainer = styled.div`
+  margin: 2.3rem;
+`;
 
 export default props => {
   const { state, dispatch } = React.useContext(Store);
@@ -10,8 +15,8 @@ export default props => {
   }, [props.match.params.id, state.votes]);
 
   return (
-    <div>
+    <VoteContainer>
       <p>{vote.popis}</p>
-    </div>
+    </VoteContainer>
   );
 };
