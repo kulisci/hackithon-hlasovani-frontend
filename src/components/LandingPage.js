@@ -88,7 +88,6 @@ export default class VotingReasons extends Component {
     } else {
       return (
         <ButtonWraper>
-          <Button>á</Button>
           {reasons.map(reason => (
             <Button key={reason.id} title={reason.popis}>
               {reason.popis}
