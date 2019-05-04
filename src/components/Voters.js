@@ -1,17 +1,10 @@
 import React from 'react';
-import VotersContext from '../context/VotersContext';
 import styled from 'styled-components';
 import { Store } from '../Store';
 
-const VotersDiv = styled.div`
+const VotersDiv = styled.div``;
 
-`;
-
-const VotersP = styled.p`
-
-`;
-
-
+const VotersP = styled.p``;
 
 export default () => {
   const { state, dispatch } = React.useContext(Store);
