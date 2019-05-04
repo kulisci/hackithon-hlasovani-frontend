@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import 'styled-components/macro';
 import styled from 'styled-components';
+
 
 const Button = styled.button`
   border: 1px solid black;
@@ -52,18 +53,46 @@ const ButtonWraper = styled.div`
   }
 `;
 
-export default () => (
-  <div>
-    <ButtonWraper>
-      {/*Používej takto: <Button title="X">X</Button>*/}
-      <Button> Zastupitelstvo města projednalo návrh na prodej části pozemku v k. ú. Chlum u Děčína a schvaluje prodej části pozemku p. č. 1037/1, dle GP č. 265-201/2018 nově ozn. jako p. p. č. 1037/13 o vým. 402 m2, v k. ú. Chlum u Děčína, se všemi součástmi a příslušenstvím pro p. Dalibora Mikeše, Zámecká 1069/1, Děčín I, za cenu 80.400,00 Kč + poplatek ve výši 12.060,00 Kč za užívání pozemku bez nájemního vztahu + ostatní náklady. </Button>
-      <Button> Zastupitelstvo města projednalo návrh na prodej části pozemku v k. ú. Chlum u Děčína a schvaluje prodej části pozemku p. č. 1037/1, dle GP č. 265-201/2018 nově ozn. jako p. p. č. 1037/13 o vým. 402 m2, v k. ú. Chlum u Děčína, se všemi součástmi a příslušenstvím pro p. Dalibora Mikeše, Zámecká 1069/1, Děčín I, za cenu 80.400,00 Kč + poplatek ve výši 12.060,00 Kč za užívání pozemku bez nájemního vztahu + ostatní náklady. </Button>
-      <Button> Zastupitelstvo města projednalo návrh na prodej části pozemku v k. ú. Chlum u Děčína a schvaluje prodej části pozemku p. č. 1037/1, dle GP č. 265-201/2018 nově ozn. jako p. p. č. 1037/13 o vým. 402 m2, v k. ú. Chlum u Děčína, se všemi součástmi a příslušenstvím pro p. Dalibora Mikeše, Zámecká 1069/1, Děčín I, za cenu 80.400,00 Kč + poplatek ve výši 12.060,00 Kč za užívání pozemku bez nájemního vztahu + ostatní náklady. </Button>
-      <Button> Zastupitelstvo města projednalo návrh na prodej části pozemku v k. ú. Chlum u Děčína a schvaluje prodej části pozemku p. č. 1037/1, dle GP č. 265-201/2018 nově ozn. jako p. p. č. 1037/13 o vým. 402 m2, v k. ú. Chlum u Děčína, se všemi součástmi a příslušenstvím pro p. Dalibora Mikeše, Zámecká 1069/1, Děčín I, za cenu 80.400,00 Kč + poplatek ve výši 12.060,00 Kč za užívání pozemku bez nájemního vztahu + ostatní náklady. </Button>
-      <Button> Zastupitelstvo města projednalo návrh na prodej části pozemku v k. ú. Chlum u Děčína a schvaluje prodej části pozemku p. č. 1037/1, dle GP č. 265-201/2018 nově ozn. jako p. p. č. 1037/13 o vým. 402 m2, v k. ú. Chlum u Děčína, se všemi součástmi a příslušenstvím pro p. Dalibora Mikeše, Zámecká 1069/1, Děčín I, za cenu 80.400,00 Kč + poplatek ve výši 12.060,00 Kč za užívání pozemku bez nájemního vztahu + ostatní náklady. </Button>
-      <Button> Zastupitelstvo města projednalo návrh na prodej části pozemku v k. ú. Chlum u Děčína a schvaluje prodej části pozemku p. č. 1037/1, dle GP č. 265-201/2018 nově ozn. jako p. p. č. 1037/13 o vým. 402 m2, v k. ú. Chlum u Děčína, se všemi součástmi a příslušenstvím pro p. Dalibora Mikeše, Zámecká 1069/1, Děčín I, za cenu 80.400,00 Kč + poplatek ve výši 12.060,00 Kč za užívání pozemku bez nájemního vztahu + ostatní náklady. </Button>
-      <Button> Zastupitelstvo města projednalo návrh na prodej části pozemku v k. ú. Chlum u Děčína a schvaluje prodej části pozemku p. č. 1037/1, dle GP č. 265-201/2018 nově ozn. jako p. p. č. 1037/13 o vým. 402 m2, v k. ú. Chlum u Děčína, se všemi součástmi a příslušenstvím pro p. Dalibora Mikeše, Zámecká 1069/1, Děčín I, za cenu 80.400,00 Kč + poplatek ve výši 12.060,00 Kč za užívání pozemku bez nájemního vztahu + ostatní náklady. </Button>
-      <Button> Zastupitelstvo města projednalo návrh na prodej části pozemku v k. ú. Chlum u Děčína a schvaluje prodej části pozemku p. č. 1037/1, dle GP č. 265-201/2018 nově ozn. jako p. p. č. 1037/13 o vým. 402 m2, v k. ú. Chlum u Děčína, se všemi součástmi a příslušenstvím pro p. Dalibora Mikeše, Zámecká 1069/1, Děčín I, za cenu 80.400,00 Kč + poplatek ve výši 12.060,00 Kč za užívání pozemku bez nájemního vztahu + ostatní náklady. </Button>
-    </ButtonWraper>
-  </div>
-);
+export default class VotingReasons extends Component {
+
+  constructor(props){
+      super(props);
+      this.state = {
+          reasons: [],
+          isLoaded: false,
+      }
+  }
+
+  componentDidMount() {
+
+      fetch('http://192.168.87.76/votingReasons.php')
+          .then(res => res.json())
+          .then(json => {
+              this.setState({
+                  isLoaded: true,
+                  reasons: json,
+              })
+              console.log(json);
+          });
+
+  }
+
+  render(){
+      var { isLoaded, reasons } = this.state;
+
+      if(!isLoaded){
+        return <div>Loading....</div>;
+      }else{
+        return(
+          <ButtonWraper>
+            <Button>á</Button>
+            {reasons.map(reason =>(
+              <Button key={reason.id} title={reason.popis}>{reason.popis}</Button>
+            ))}
+            
+          </ButtonWraper>
+        );
+      }
+  }
+}
+

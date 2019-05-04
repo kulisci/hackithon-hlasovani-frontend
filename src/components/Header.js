@@ -20,16 +20,13 @@ const NavbarDiv = styled.div`
 `;
 
 const NavbarHr = styled.hr`
-  width: 100vw;
-  position: relative;
+  width: 99%;
   margin-bottom: 3rem;
   margin-top: 0px;
 `;
 
 const LinkHr = styled.hr`
-  width: 100vw;
-  position: relative;
-  left: -8px;
+  width: 99%;
   display: block;
   @media (min-width: 35rem){
     display: none;
@@ -39,9 +36,9 @@ const LinkHr = styled.hr`
 export default () => (
   <header>
     <Navbar>
-      <NavbarDiv><Link to="/">Děčín Hlasování</Link></NavbarDiv>
+      <NavbarDiv><Link to="/">Hlasování zastupitelstva Děčín</Link></NavbarDiv>
       <LinkHr></LinkHr>
-      <NavbarDiv><Link to="/voters">Voters</Link></NavbarDiv>
+      <NavbarDiv><Link to="/voters">Zastupitelé</Link></NavbarDiv>
     </Navbar>
     <NavbarHr></NavbarHr>
   </header>
