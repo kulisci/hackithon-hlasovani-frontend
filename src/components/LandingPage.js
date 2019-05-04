@@ -65,18 +65,18 @@ const ButtonWraper = styled.div`
 export default props => {
   const { state, dispatch } = React.useContext(Store);
 
-  const fetchDataAction = async () => {
-    const data = await fetch('http://192.168.81.24/votingReasons.php');
-    const dataJSON = await data.json();
-    return dispatch({
-      type: 'FETCH_DATA',
-      payload: dataJSON
-    });
-  };
-
   React.useEffect(() => {
-    state.votes.length === 0 && fetchDataAction();
-  }, [fetchDataAction, state.votes.length]);
+    const fetchDataAction = async () => {
+      const data = await fetch('http://192.168.81.24/votingReasons.php');
+      const dataJSON = await data.json();
+      return dispatch({
+        type: 'FETCH_DATA',
+        payload: dataJSON
+      });
+    };
+
+    fetchDataAction();
+  }, [dispatch]);
 
   return (
     <ButtonWraper>
