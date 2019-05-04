@@ -7,16 +7,32 @@ const VoteContainer = styled.div`
 `;
 
 export default props => {
-  const { state } = React.useContext(Store);
-  const [vote, setVote] = React.useState({});
+  const { state, dispatch } = React.useContext(Store);
 
   React.useEffect(() => {
-    setVote(state.votes.find(votes => votes.id === props.match.params.id));
-  }, [props.match.params.id, state.votes]);
+    const fetchSingleVote = async () => {
+      const data = await fetch(
+        `http://192.168.81.24/votingReasons.php?id=${props.match.params.id}`
+      );
+      const dataJSON = await data.json();
+      return dispatch({
+        type: 'FETCH_SINGLE_VOTE',
+        payload: dataJSON
+      });
+    };
+
+    fetchSingleVote();
+  }, [dispatch, props.match.params.id]);
 
   return (
     <VoteContainer>
-      <p>{vote.popis}</p>
+      {state.voteData.map(
+        ({ id, jmeno, prijmeni, politicka_strana, stav_hlasovani }) => (
+          <p key={id}>
+            {prijmeni}, {jmeno} - {politicka_strana} - {stav_hlasovani}
+          </p>
+        )
+      )}
     </VoteContainer>
   );
 };
