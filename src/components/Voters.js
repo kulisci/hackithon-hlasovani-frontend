@@ -1,5 +1,17 @@
 import React from 'react';
+import VotersContext from '../context/VotersContext';
+import styled from 'styled-components';
 import { Store } from '../Store';
+
+const VotersDiv = styled.div`
+
+`;
+
+const VotersP = styled.p`
+
+`;
+
+
 
 export default () => {
   const { state, dispatch } = React.useContext(Store);
@@ -20,15 +32,15 @@ export default () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <VotersDiv>
       {console.log(state.representatives)}
       {state.representatives.map(
         ({ radove_cislo, jmeno, prijmeni, politicka_strana }) => (
-          <p key={radove_cislo}>
+          <VotersP key={radove_cislo}>
             {jmeno} {prijmeni} - {politicka_strana}
-          </p>
+          </VotersP>
         )
       )}
-    </div>
+    </VotersDiv>
   );
 };
