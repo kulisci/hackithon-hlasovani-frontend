@@ -82,8 +82,8 @@ export default props => {
       });
     };
 
-    state.votes.length === 0 && fetchDataAction();
-  }, [dispatch, state.votes.length]);
+    fetchDataAction();
+  }, [dispatch]);
 
   return (
     <ButtonWraper>
