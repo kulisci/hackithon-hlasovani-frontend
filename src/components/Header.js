@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Navbar = styled.div`
-  grid-template-column: 400px 150px 400px;
+  grid-template-columns: 400px 150px 400px;
   display: grid;
   justify-items: center;
   text-align: center;
@@ -11,7 +11,8 @@ const Navbar = styled.div`
     grid-template-columns: 1fr auto auto;
     justify-items: start;
   }
-  background-color: white;
+  background-color: white
+  ;
 `;
 
 const NavbarDiv = styled.div`
@@ -21,9 +22,6 @@ const NavbarDiv = styled.div`
     text-decoration: none;
     color: black;
     transition: all 0.2s ease;
-    &:hover {
-      color: hotpink;
-    }
   }
 `;
 

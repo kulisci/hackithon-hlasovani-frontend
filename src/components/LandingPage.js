@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Store } from '../Store';
 
 const Button = styled.button`
-  border: 1px solid black;
+border: 1px solid black;
   min-height: 5rem;
   background-color: white;
   overflow: hidden;
@@ -46,14 +46,7 @@ const Button = styled.button`
     outline: 0;
     border: 1px solid blue;
   }
-  -moz-box-shadow: 1px 1px 2px 3px #ccc;
-  -webkit-box-shadow: 1px 1px 2px 3px #ccc;
-  box-shadow: 1px 1px 2px 3px #ccc;
-  &:hover {
-    -moz-box-shadow: 0px 0px 1px 2px #ccc;
-    -webkit-box-shadow: 0px 0px 1px 2px #ccc;
-    box-shadow: 0px 0px 1px 2px #ccc;
-  }
+  
 `;
 
 const ButtonWraper = styled.div`

@@ -3,4 +3,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #ff1f17;
+  background-image: url("https://www.transparenttextures.com/patterns/shattered-dark.png");
+  font-family: 'Montserrat', sans-serif;
 }
