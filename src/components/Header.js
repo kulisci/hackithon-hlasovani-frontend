@@ -21,6 +21,9 @@ const NavbarDiv = styled.div`
     text-decoration: none;
     color: black;
     transition: all 0.2s ease;
+    &:hover {
+      color: #3105b5;
+    }
   }
 `;
 
@@ -28,6 +31,8 @@ const NavbarHr = styled.hr`
   width: 99%;
   margin-bottom: 3rem;
   margin-top: 0px;
+  border: none;
+  background-color: none;
 `;
 
 const LinkHr = styled.hr`
