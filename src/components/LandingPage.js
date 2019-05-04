@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import 'styled-components/macro';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { Store } from '../Store';
 
 const Button = styled.button`
   border: 1px solid black;
@@ -59,42 +61,29 @@ const ButtonWraper = styled.div`
   }
 `;
 
-export default class VotingReasons extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      reasons: [],
-      isLoaded: false
-    };
-  }
+export default props => {
+  const { state, dispatch } = React.useContext(Store);
 
-  componentDidMount() {
-    fetch('http://192.168.87.76/votingReasons.php')
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          isLoaded: true,
-          reasons: json
-        });
-        console.log(json);
-      });
-  }
+  const fetchDataAction = async () => {
+    const data = await fetch('http://192.168.87.76/votingReasons.php');
+    const dataJSON = await data.json();
+    return dispatch({
+      type: 'FETCH_DATA',
+      payload: dataJSON
+    });
+  };
 
-  render() {
-    var { isLoaded, reasons } = this.state;
+  React.useEffect(() => {
+    state.votes.length === 0 && fetchDataAction();
+  }, [fetchDataAction, state.votes.length]);
 
-    if (!isLoaded) {
-      return <div>Loading....</div>;
-    } else {
-      return (
-        <ButtonWraper>
-          {reasons.map(reason => (
-            <Button key={reason.id} title={reason.popis}>
-              {reason.popis}
-            </Button>
-          ))}
-        </ButtonWraper>
-      );
-    }
-  }
-}
+  return (
+    <ButtonWraper>
+      {state.votes.map(vote => (
+        <Link key={vote.id} to={`/vote/${vote.id}`}>
+          <Button>{vote.popis}</Button>
+        </Link>
+      ))}
+    </ButtonWraper>
+  );
+};
