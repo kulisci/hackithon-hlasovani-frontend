@@ -90,7 +90,9 @@ export default props => {
   };
 
   return (
+
     <VoteContainer>
+
       <VoteTitle>{state.voteData[0] ? state.voteData[0].ppph : ''}</VoteTitle>
       <PieChart
         data={[
@@ -122,7 +124,8 @@ export default props => {
         animationEasing="cubic-bezier(0.6, 0.04, 0.23, 0.335)"
         onClick={handleOnClick}
       />
+      <p><h3>Pro ({countPro}) -> zelená <br /> Proti ({countProti}) -> červená<br /> Omluven ({countOmluven}) -> žlutá <br /> Zdržel se ({countZdrzelSe}) -> černá <br /> Nehlasoval ({countNehlasoval}) -> šedá</h3></p>
       <ViewRepresentatives representatives={representatives} />
-    </VoteContainer>
+    </VoteContainer >
   );
 };
