@@ -13,7 +13,6 @@ border: 1px solid black;
   height: 3rem;
   border-radius: 0.5rem;
   padding: 1rem 1rem 1rem 1rem;
-  transition: all 0.2s ease;
   &:after {
     content: '';
     text-align: right;

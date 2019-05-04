@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Navbar = styled.div`
-  grid-template-columns: 400px 150px 400px;
+  grid-template-column: 400px 150px 400px;
   display: grid;
   justify-items: center;
   text-align: center;
@@ -16,6 +16,7 @@ const Navbar = styled.div`
 
 const NavbarDiv = styled.div`
   font-size: 1.6em;
+  min-height: 50px;
   padding: 1rem 4rem;
   a {
     text-decoration: none;
